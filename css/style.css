@@ -1,0 +1,245 @@
+/* Importação de fontes do Google Fonts (se não estiver no HTML) */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans&display=swap');
+
+:root {
+    --primary-color: #ff0000; /* Rosa forte - Amor */
+    --secondary-color: #FFC0CB; /* Rosa claro - Suavidade */
+    --accent-color: #87CEEB; /* Azul céu - Leveza */
+    --text-dark: #4A4A4A;
+    --text-light: #FFFFFF;
+    --bg-light: #FDF5E6; /* Creme claro - Aconchego */
+}
+
+/* ... (seus estilos existentes no topo do arquivo) ... */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    
+    background-image: url('../imagens/foto1.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    background-color: rgba(255, 255, 255, 0.6);
+    background-blend-mode: overlay;
+
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+
+/* ... (o restante dos seus estilos para header, main, gallery, etc.) ... */
+
+header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    margin: 0;
+    font-size: 3em;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: var(--text-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-bottom: 1px dashed var(--secondary-color);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Estilo para as fotos (em fotos.html) */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+.gallery img {
+    width: 100%;
+    height: 200px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 30px;
+    font-size: 0.9em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+/* ... (seus estilos anteriores) ... */
+
+/* Torna a seção de fotos o ponto de referência para posicionamento absoluto */
+#nossas-fotos {
+    position: relative; /* FUNDAMENTAL para os corações flutuarem dentro dela */
+    overflow: hidden; /* Garante que os corações não saiam da seção */
+    /* ... (outras propriedades da seção) ... */
+}
+
+/* Estilos para o contêiner dos corações */
+.heart-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite clicar nas fotos por baixo dos corações */
+    z-index: 10; /* Garante que os corações fiquem acima das fotos, mas abaixo do header */
+}
+
+/* Estilos para cada emoji de coração */
+.heart-emoji {
+    position: absolute;
+    font-size: 1.5em; /* Tamanho dos corações */
+    opacity: 0; /* Começam invisíveis */
+    animation: floatAndFade 6s ease-in-out infinite; /* Animação principal */
+    transform: translate(-50%, -50%); /* Ajusta o centro do emoji para o posicionamento */
+    text-shadow: 0 0 5px rgba(255, 105, 180, 0.5); /* Leve sombra rosa */
+}
+
+/* Posições iniciais e atrasos aleatórios para cada coração */
+/* Isso fará com que eles apareçam em lugares diferentes e em tempos diferentes */
+.heart-emoji:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; font-size: 1.6em; }
+.heart-emoji:nth-child(2) { top: 50%; left: 80%; animation-delay: 1s; font-size: 1.3em; }
+.heart-emoji:nth-child(3) { top: 80%; left: 30%; animation-delay: 2s; font-size: 1.8em; }
+.heart-emoji:nth-child(4) { top: 10%; left: 60%; animation-delay: 3s; font-size: 1.4em; }
+.heart-emoji:nth-child(5) { top: 60%; left: 5%; animation-delay: 4s; font-size: 1.7em; }
+.heart-emoji:nth-child(6) { top: 35%; left: 90%; animation-delay: 5s; font-size: 1.2em; }
+.heart-emoji:nth-child(7) { top: 90%; left: 70%; animation-delay: 0.5s; font-size: 1.9em; }
+.heart-emoji:nth-child(8) { top: 5%; left: 40%; animation-delay: 2.5s; font-size: 1.5em; }
+/* Adicione mais regras nth-child se tiver mais corações no HTML */
+
+
+/* Animação: flutuar e aparecer/desaparecer */
+@keyframes floatAndFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.5);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.5);
+    }
+}
+
+
+/* Ajustes para responsividade (opcional, pode ajustar o tamanho em telas pequenas) */
+@media (max-width: 480px) {
+    .heart-emoji {
+        font-size: 1.2em; /* Corações menores em telas muito pequenas */
+    }
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com 90% de opacidade */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Se você tem outras seções que precisam de fundo, como por exemplo #nossa-historia */
+#nossa-historia {
+    background-color: #FFFFFF; /* Fundo branco sólido */
+    padding: 20px;
+    border-radius: 8px; /* Opcional: cantos arredondados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra mais leve */
+}
