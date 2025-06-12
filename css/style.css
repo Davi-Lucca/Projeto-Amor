@@ -401,3 +401,97 @@ main {
 .audio-control-button:active {
     transform: scale(0.95);
 }
+
+/* Estilos para o contêiner do slideshow */
+.slideshow-container {
+    max-width: 800px; /* Define uma largura máxima para o slideshow */
+    position: relative;
+    margin: auto; /* Centraliza o slideshow na página */
+    overflow: hidden; /* Garante que nada transborde */
+    border-radius: 10px; /* Opcional: bordas arredondadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilos para cada slide */
+.slide {
+    display: none; /* Esconde os slides por padrão, JS vai mostrar */
+}
+
+/* Estilos para as imagens dentro dos slides */
+.slideshow-container img {
+    width: 100%; /* A imagem sempre ocupará 100% da largura do seu contêiner pai */
+    height: auto; /* A altura será ajustada automaticamente para manter a proporção */
+    display: block; /* Remove o espaço extra abaixo da imagem */
+    border-radius: 10px; /* Para as bordas arredondadas da imagem */
+}
+
+/* Estilos para os botões de navegação (anterior/próximo) */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5); /* Fundo semi-transparente para o botão */
+}
+
+/* Posição do botão "próximo" à direita */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Efeito hover nos botões */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Estilos para os pontos indicadores (dots) */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+/* Estilo para o dot ativo (selecionado) */
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Animação de fade */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+
+/* Media Queries específicas para o slideshow se precisar de mais ajustes */
+@media screen and (max-width: 600px) {
+    /* Diminui o tamanho dos botões de navegação em telas pequenas */
+    .prev, .next {
+        font-size: 14px;
+        padding: 10px;
+    }
+    /* Diminui o tamanho dos pontos indicadores em telas pequenas */
+    .dot {
+        height: 10px;
+        width: 10px;
+    }
+}
