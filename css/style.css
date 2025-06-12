@@ -372,3 +372,32 @@ main {
     .cordel-emoji:nth-child(7) { top: 3%; left: 40%; }
 }
 
+/* Estilos para o botão de controle de áudio */
+.audio-control-button {
+    position: fixed; /* Fixa o botão na tela */
+    bottom: 20px;    /* 20px da parte inferior */
+    right: 20px;     /* 20px da parte direita */
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50%; /* Faz o botão ser redondo */
+    width: 50px;
+    height: 50px;
+    font-size: 1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.audio-control-button:hover {
+    background-color: #e60000; /* Um vermelho um pouco mais escuro */
+    transform: scale(1.05);
+}
+
+.audio-control-button:active {
+    transform: scale(0.95);
+}
