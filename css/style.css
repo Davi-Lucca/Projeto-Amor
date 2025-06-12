@@ -243,3 +243,132 @@ main {
     border-radius: 8px; /* Opcional: cantos arredondados */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra mais leve */
 }
+
+/* ... (seus estilos existentes para body, header, main, footer, etc.) ... */
+
+/* --- Estilos para a seção do Cordel e seus ícones --- */
+#nossa-historia-cordel {
+    position: relative; /* FUNDAMENTAL para os ícones flutuarem dentro dela */
+    overflow: hidden; /* Garante que os ícones não saiam da seção */
+    padding: 30px 20px; /* Ajuste o padding se necessário */
+    text-align: center;
+    /* Adicione um fundo se quiser que o cordel se destaque mais */
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo quase opaco para o texto */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 20px auto; /* Centraliza a seção dentro do main */
+    max-width: 800px; /* Largura máxima para o texto do cordel */
+    line-height: 1.8; /* Aumenta o espaçamento entre as linhas do cordel */
+}
+
+#nossa-historia-cordel h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color); /* Use a cor primária para o título */
+}
+
+.intro-cordel, .final-cordel {
+    font-family: 'Dancing Script', cursive; /* Use a fonte mais elegante */
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.cordel-text p {
+    font-family: 'Open Sans', sans-serif; /* Mantenha a fonte padrão para o texto */
+    font-size: 1.1em;
+    margin-bottom: 10px; /* Espaçamento entre as estrofes */
+    color: var(--text-dark);
+}
+
+/* Contêiner para os ícones do cordel */
+.cordel-icons-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite interagir com o texto por baixo */
+    z-index: 5; /* Abaixo do texto, mas acima do fundo da seção */
+    opacity: 0.7; /* Suaviza a intensidade dos ícones */
+}
+
+/* Estilos para cada emoji de cordel */
+.cordel-emoji {
+    position: absolute;
+    font-size: 2em; /* Tamanho dos ícones */
+    opacity: 0; /* Começam invisíveis */
+    animation: floatAndFadeCordel 8s ease-in-out infinite; /* Animação principal */
+    transform: translate(-50%, -50%); /* Ajusta o centro do emoji para o posicionamento */
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.6); /* Sombra mais destacada */
+    color: #ff69b4; /* Cor rosa quente para os corações específicos, se houver */
+}
+
+/* Posições iniciais e atrasos aleatórios para cada ícone */
+/* Ajuste 'top' e 'left' e 'font-size' conforme o gosto para espalhar */
+.cordel-emoji:nth-child(1) { top: 15%; left: 15%; animation-delay: 0s; font-size: 2.2em; } /* Casal */
+.cordel-emoji:nth-child(2) { top: 40%; left: 85%; animation-delay: 1.5s; font-size: 1.8em; } /* Anel */
+.cordel-emoji:nth-child(3) { top: 70%; left: 20%; animation-delay: 3s; font-size: 2.5em; } /* Pomba */
+.cordel-emoji:nth-child(4) { top: 25%; left: 70%; animation-delay: 4.5s; font-size: 2em; } /* Brinde */
+.cordel-emoji:nth-child(5) { top: 55%; left: 10%; animation-delay: 6s; font-size: 1.9em; } /* Coração 1 */
+.cordel-emoji:nth-child(6) { top: 85%; left: 50%; animation-delay: 7.5s; font-size: 2.3em; } /* Mãos Oração */
+.cordel-emoji:nth-child(7) { top: 5%; left: 45%; animation-delay: 0.8s; font-size: 1.7em; } /* Coração 2 */
+/* Adicione mais regras nth-child se tiver mais emojis no HTML */
+
+
+/* Animação: flutuar e aparecer/desaparecer para os ícones do cordel */
+@keyframes floatAndFadeCordel {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.6) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0px) scale(1) rotate(5deg);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(-30px) scale(1) rotate(-5deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-60px) scale(0.6) rotate(0deg);
+    }
+}
+/* --- Fim dos Estilos para a seção do Cordel e seus ícones --- */
+
+
+/* ... (seus estilos anteriores para #nossas-fotos, .gallery, .gallery img, heart-overlay, heart-emoji, etc.) ... */
+
+
+/* Media Queries (Ajuste conforme necessário, a lógica de posicionamento absoluto permanece) */
+@media (max-width: 768px) {
+    #nossa-historia-cordel {
+        padding: 20px 15px;
+        max-width: 100%; /* Ocupa a largura total dentro do main */
+    }
+    .cordel-emoji {
+        font-size: 1.6em; /* Ícones menores em telas menores */
+    }
+    .cordel-emoji:nth-child(1) { top: 10%; left: 10%; }
+    .cordel-emoji:nth-child(2) { top: 30%; left: 80%; }
+    .cordel-emoji:nth-child(3) { top: 60%; left: 15%; }
+    .cordel-emoji:nth-child(4) { top: 20%; left: 65%; }
+    .cordel-emoji:nth-child(5) { top: 50%; left: 5%; }
+    .cordel-emoji:nth-child(6) { top: 80%; left: 70%; }
+    .cordel-emoji:nth-child(7) { top: 5%; left: 35%; }
+}
+
+@media (max-width: 480px) {
+    .cordel-emoji {
+        font-size: 1.3em; /* Ainda menores em celulares */
+    }
+    .cordel-emoji:nth-child(1) { top: 8%; left: 8%; }
+    .cordel-emoji:nth-child(2) { top: 25%; left: 85%; }
+    .cordel-emoji:nth-child(3) { top: 50%; left: 10%; }
+    .cordel-emoji:nth-child(4) { top: 15%; left: 70%; }
+    .cordel-emoji:nth-child(5) { top: 40%; left: 5%; }
+    .cordel-emoji:nth-child(6) { top: 70%; left: 75%; }
+    .cordel-emoji:nth-child(7) { top: 3%; left: 40%; }
+}
+
